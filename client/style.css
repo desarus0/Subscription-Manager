@@ -1,0 +1,207 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Urbanist", sans-serif;
+}
+
+body{
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.banner-wrapper {
+    background-color: #F3F4F6;
+    width: 770px;
+    border-right: 1px solid #cecece;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner-wrapper .title, 
+.banner-wrapper .title label,
+.description h1,
+.wrapper h1 {
+    font-family: "Bricolage Grotesque", sans-serif !important;
+}
+
+.banner-wrapper .title {
+    font-weight: 500;
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.banner-wrapper .title img{
+    width: 55px;
+    height: auto;
+}
+
+.description {
+    margin-top: 50px;
+}
+
+.description h1 {
+    font-size: 28px;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+.description p {
+    font-size: 20px;
+    color: #454a48;
+}
+
+.media {
+    margin-top: 150px;
+    transform: scale(1.5);
+
+    transform-origin: center;
+}
+
+.wrapper{
+    width: 400px;
+    color: #454a48;
+    margin-left: auto;
+    margin-right: 400px;
+    align-self:center;
+}
+
+.wrapper h1{
+    color:black;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 36px;
+}
+
+.name-row {
+    display: flex;
+    gap: 16px;
+}
+
+.field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.field label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.field input {
+    height: 48px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    padding: 0 14px;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.2s ease;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.field input:focus {
+    border: 2px solid #06BC9A;
+}
+
+input[type="password"] {
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: #151716;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.wrapper .btn:hover{
+    background: #012f26;
+    color: #07ebc0;
+}
+
+.terms-policy{
+    margin-bottom: 30px;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    position: relative;
+}
+
+.custom-checkbox input {
+    display: none;
+}
+
+.checkmark {
+    width: 15px;
+    height: 15px;
+    border: 1px solid rgba(19, 35, 35, 0.55);
+    border-radius: 2px;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.custom-checkbox input:checked + .checkmark {
+    background-color: #151716;
+    border-color: #151716;
+}
+
+.custom-checkbox input:checked + .checkmark::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 1.75px;
+    width: 2.5px;
+    height: 6px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.divider-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.divider-text::before,
+.divider-text::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #E5E7EB;
+}
+
+.divider-text span {
+    padding: 0 10px;
+    color: #6B7280;
+    font-size: 12px;
+}
+
+.account-exists {
+    align-items: center;
+    text-align: center;
+}
+

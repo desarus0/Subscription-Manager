@@ -46,6 +46,7 @@ async def get_subscription_by_id(subscription_id: str, user_id: str) -> Optional
     return None
 
 async def update_subscription(subscription_id: str, user_id: str, update_data: SubscriptionUpdate) -> Optional[Subscription]:
+    # Only include fields that were provided
     update_dict = {k: v for k, v in update_data.dict(exclude_unset=True).items() if v is not None}
     update_dict["updated_at"] = datetime.utcnow()
 

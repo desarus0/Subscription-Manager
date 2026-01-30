@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recur</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js"type="module"></script>
+</head>
+<body>
+    <div class="banner-wrapper">
+        <div class="title">
+            <img src="assets/logo.png" alt="Recur Logo">
+            <label>Recur</label>
+        </div>
+
+        <div class="description">
+            <h1>Welcome to Recur</h1>
+            <p>An open-source subscription management tool.</p>
+        </div>
+
+        <div class="media">
+            <dotlottie-wc src="https://lottie.host/5fa04e1b-7c7e-405a-b716-ddbe79e2129e/K0Huu3B85e.lottie" autoplay loop></dotlottie-wc>
+        </div>
+    </div>
+
+    <div class = "wrapper">
+        <form action="">
+            <h1>Let's set up your account</h1>
+            <div class="name-row">
+                <div class="field">
+                    <label>First Name</label>
+                    <input type="text" required>
+                </div>
+
+                <div class="field">
+                    <label>Last Name</label>
+                    <input type="text" required>
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Email Address</label>
+                <input type="text" required>
+            </div>
+
+             <div class="field">
+                <label>Password</label>
+                <div class="password-wrapper">
+                    <input type="password" required>
+                </div>
+            </div>
+
+            <div class="terms-policy">
+                <label class="custom-checkbox">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                    I agree to the Terms & Policy.
+                </label>
+            </div>
+
+            <button type="submit" class="btn">Sign Up</button>
+
+            <div class="divider-text">
+                <span>OR</span>
+            </div>
+
+            <div class="account-exists">
+                <p>Have an account already? Log In</p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
