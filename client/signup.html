@@ -9,6 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js"type="module"></script>
+
+    <script
+        async
+        crossorigin="anonymous"
+        data-clerk-publishable-key="pk_test_YXNzdXJlZC1wdWctMTIuY2xlcmsuYWNjb3VudHMuZGV2JA"
+        src="https://assured-pug-12.clerk.accounts.dev/npm/@clerk/clerk-js@5/dist/clerk.browser.js"
+        type="text/javascript">
+    </script>
+
+    <script defer src="script.js"></script>
 </head>
 <body>
     <div class="banner-wrapper">
@@ -28,38 +38,67 @@
     </div>
 
     <div class = "wrapper">
-        <form action="">
+        <form action="" id="signup-form">
             <h1>Let's set up your account</h1>
             <div class="name-row">
                 <div class="field">
                     <label>First Name</label>
-                    <input type="text" required>
+                    <input id="first-name" type="text">
+                    <span class="error-message" id="first-name-error"></span>
                 </div>
 
                 <div class="field">
                     <label>Last Name</label>
-                    <input type="text" required>
+                    <input id="last-name" type="text">
+                    <span class="error-message" id="last-name-error"></span>
                 </div>
             </div>
 
             <div class="field">
                 <label>Email Address</label>
-                <input type="text" required>
+                <input id="email" type="text">
+                <span class="error-message" id="email-error"></span>
             </div>
 
              <div class="field">
                 <label>Password</label>
                 <div class="password-wrapper">
-                    <input type="password" required>
+                    <input id="password" type="password">
+                    <span class="error-message" id="password-error"></span>
+                </div>
+
+                <div class="password-requirements" id="password-requirements" style="display: none;">
+                    <p class="req-title">Password must contain:</p>
+                    <div class="requirement" id="req-length">
+                        <span class="req-icon">✗</span>
+                        <span>At least 8 characters</span>
+                    </div>
+                    <div class="requirement" id="req-uppercase">
+                        <span class="req-icon">✗</span>
+                        <span>One uppercase letter (A-Z)</span>
+                    </div>
+                    <div class="requirement" id="req-lowercase">
+                        <span class="req-icon">✗</span>
+                        <span>One lowercase letter (a-z)</span>
+                    </div>
+                    <div class="requirement" id="req-number">
+                        <span class="req-icon">✗</span>
+                        <span>One number (0-9)</span>
+                    </div>
+                    <div class="requirement" id="req-special">
+                        <span class="req-icon">✗</span>
+                        <span>One special character (!@#$%^&*)</span>
+                    </div>
                 </div>
             </div>
 
             <div class="terms-policy">
                 <label class="custom-checkbox">
-                    <input type="checkbox">
+                    <input type="checkbox" id="terms-checkbox">
                     <span class="checkmark"></span>
                     I agree to the Terms & Policy.
                 </label>
+                <span class="error-message" id="terms-checkbox-error"></span>
             </div>
 
             <button type="submit" class="btn">Sign Up</button>
