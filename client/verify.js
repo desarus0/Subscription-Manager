@@ -34,12 +34,33 @@ verifyForm.addEventListener('submit', async (e) => {
             await clerk.setActive({session: result.createdSessionId});
 
             const user = await clerk.user;
-            alert("Email verified! Welcome to Recur!");
+            
+            try {
+                const response = await fetch('http://localhost:8000/api/v1/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: user.emailAddresses[0].emailAddress,
+                        name: user.fullName
+                    })
+                });
 
+            if(!response.ok) {
+                const error = await response.json();
+                throw new Error(error.detail);
+            }
+
+            } catch (fetchError) {
+                console.error("Registration error:", fetchError);
+                showError('Account verified but registration failed.');
+            }
         }
     } catch (error) {
         submitButton.classList.remove('btn-loading');
         submitButton.disabled = false;
+        
         console.error("Verification error:", error);
         if (error.errors) {
             error.errors.forEach(err => {

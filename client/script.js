@@ -67,11 +67,11 @@ form.addEventListener('submit', async (e) => {
                 password: password.value,
             });
 
-            window.location.href = "verify-email.html";
 
             await signUpAttempt.prepareEmailAddressVerification({
                 strategy: "email_code"
             });
+            window.location.href = "verify-email.html";
 
             console.log("Signup successful! Awaiting email verification.");
             console.log("User ID:", signUpAttempt.id);
