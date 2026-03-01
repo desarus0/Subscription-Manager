@@ -9,12 +9,12 @@ function Home(){
             <div className="relative overflow-hidden min-h-screen">
                 
                 {/* Video */}
-                <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-40">
+                <video autoPlay muted loop playsInline style={{ objectPosition: 'center 10%' }} className="absolute inset-0 w-full h-full object-cover opacity-40">
                     <source src="/src/assets/home.mp4" type="video/mp4" />
                 </video>
 
                 {/* Top fade */}
-                <div className="absolute top-0 left-0 right-0 h-64 bg-linear-to-b from-[#080808] to-transparent z-10" />
+                <div className="absolute top-0 left-0 right-0 h-150 bg-linear-to-b from-[#080808] via-[#080808] to-transparent z-10" />
                 
                 {/* Bottom fade */}
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-[#080808] to-transparent z-10" />

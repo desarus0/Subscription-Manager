@@ -100,7 +100,7 @@ function SignUp() {
                 <h1 className="text-white text-2xl font-semibold mb-1 tracking-tight" style={{ fontFamily: 'Google Sans' }}>
                     Let's set up your account
                 </h1>
-                <p className="text-gray-500 text-sm mb-8">Start managing your subscriptions today.</p>
+                <p className="text-gray-500 text-sm mb-8">Start tracking your subscriptions today.</p>
 
                 <form onSubmit={handleSubmit}>
 
@@ -215,7 +215,7 @@ function SignUp() {
 
                     <p className="text-center text-xs text-gray-500">
                         Already have an account?{' '}
-                        <span className="text-white cursor-pointer hover:underline">Log in</span>
+                        <span className="text-white cursor-pointer hover:underline" onClick={() => navigate('/login')}>Log in</span>
                     </p>
 
                 </form>
