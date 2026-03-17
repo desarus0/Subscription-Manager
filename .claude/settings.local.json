@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -rh \"from.*[''''].*components/\\\\|from.*[''''].*pages/\" 'c:\\\\Users\\\\ryesa\\\\OneDrive\\\\Desktop\\\\Files\\\\Subscription Manager\\\\client\\\\recur-app\\\\src' --include=*.jsx --include=*.js)",
+      "Bash(cat:*)"
+    ]
+  }
+}

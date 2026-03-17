@@ -7,7 +7,7 @@ router = APIRouter()
 
 @router.get("/summary")
 async def get_analytics(current_user: dict = Depends(get_current_user)):
-    user_id = str(current_user["_id"])
+    user_id = current_user["clerk_user_id"]
 
     subscriptions = await get_user_subscriptions(user_id)
     total_monthly = 0

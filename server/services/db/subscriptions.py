@@ -1,6 +1,6 @@
 from database.db import subscriptions_collection
 from models.subscription import Subscription, SubscriptionCreate, SubscriptionUpdate
-from datetime import datetime
+from datetime import datetime, date
 from bson import ObjectId
 from typing import List, Optional
 
@@ -11,8 +11,9 @@ async def create_subscription(user_id: str, sub_data: SubscriptionCreate) -> Sub
         "name": sub_data.name,
         "cost": sub_data.cost,
         "billing_cycle": sub_data.billing_cycle,
-        "renewal_date": sub_data.renewal_date,
+        "renewal_date": datetime.combine(sub_data.renewal_date, datetime.min.time()),
         "status": "active",
+        "category": sub_data.category,
         "created_at": datetime.utcnow(),
         "updated_at": datetime.utcnow(),
     }

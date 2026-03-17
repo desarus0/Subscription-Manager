@@ -1,9 +1,12 @@
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    # Database 
+    # Database
     CONNECTION_STRING: str
     DATABASE_NAME: str
+
+    # Clerk
+    CLERK_JWKS_URL: str
 
     # Logging settings
     LOG_LEVEL: str = "INFO"

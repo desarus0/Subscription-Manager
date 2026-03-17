@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { useSignUp } from '@clerk/clerk-react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useSignUp, useAuth } from '@clerk/clerk-react'
+import { useNavigate, Link } from 'react-router-dom'
 import Logo from '../components/logo.jsx'
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -22,7 +22,18 @@ function isPasswordValid(passwordValue) {
 
 function SignUp() {
     const { signUp } = useSignUp()
+    const { isSignedIn, isLoaded } = useAuth()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (isLoaded && isSignedIn) {
+            navigate('/dashboard')
+        }
+    }, [isLoaded, isSignedIn, navigate])
+
+    if (!isLoaded || isSignedIn) {
+        return null
+    }
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -92,12 +103,14 @@ function SignUp() {
         <div className="min-h-screen bg-[#080808] flex flex-col items-center justify-center px-4">
 
             {/* Logo */}
-            <Logo />
+            <Link to="/">
+                <Logo />
+            </Link>
 
             {/* Card */}
-            <div className="w-full max-w-md bg-[#0f0f0f] border border-[#1f1f1f] rounded-2xl px-8 py-10 shadow-2xl">
+            <div className="w-full max-w-md bg-[#0f0f0f] border border-[#1f1f1f] rounded-2xl px-8 py-10 shadow-2xl" style={{ fontFamily: 'Geist' }}>
 
-                <h1 className="text-white text-2xl font-semibold mb-1 tracking-tight" style={{ fontFamily: 'Google Sans' }}>
+                <h1 className="text-white text-2xl font-semibold mb-1 tracking-tight">
                     Let's set up your account
                 </h1>
                 <p className="text-gray-500 text-sm mb-8">Start tracking your subscriptions today.</p>

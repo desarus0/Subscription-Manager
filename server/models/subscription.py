@@ -8,6 +8,7 @@ class SubscriptionCreate(BaseModel):
     cost: float
     billing_cycle: str
     renewal_date: date
+    category: Optional[str] = None
 
 class SubscriptionUpdate(BaseModel):
     platform: Optional[str] = None
@@ -16,6 +17,7 @@ class SubscriptionUpdate(BaseModel):
     billing_cycle: Optional[str] = None
     renewal_date: Optional[date] = None
     status: Optional[str] = None
+    category: Optional[str] = None
 
 class Subscription(BaseModel):
     id: Optional[str] = None
@@ -26,6 +28,7 @@ class Subscription(BaseModel):
     billing_cycle: str
     renewal_date: date
     status: str = "active"
+    category: Optional[str] = None
     created_at: datetime = datetime.utcnow()
     updated_at: datetime = datetime.utcnow()
 
@@ -37,3 +40,4 @@ class SubscriptionResponse(BaseModel):
     billing_cycle: str
     renewal_date: date
     status: str
+    category: Optional[str] = None

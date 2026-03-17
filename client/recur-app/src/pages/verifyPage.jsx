@@ -1,11 +1,27 @@
 import { useState, useRef, useEffect } from 'react'
-import { useSignUp } from '@clerk/clerk-react'
+import { useSignUp, useAuth } from '@clerk/clerk-react'
 import { useNavigate } from 'react-router-dom'
 import Logo from '../components/logo.jsx'
 
 function VerifyPage() {
-    const { signUp, setActive } = useSignUp()
+    const { isLoaded, signUp, setActive } = useSignUp()
+    const { isSignedIn } = useAuth()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!isLoaded) return
+
+        if (isSignedIn) {
+            navigate('/')
+            return
+        }
+
+        if (!signUp) {
+            navigate('/register')
+        }
+    }, [isLoaded, isSignedIn, signUp, navigate])
+
+    if (!isLoaded || isSignedIn || !signUp) return null
 
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')

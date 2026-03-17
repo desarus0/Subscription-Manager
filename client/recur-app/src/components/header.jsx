@@ -35,7 +35,7 @@ function Header() {
                         <Github className="w-4 h-4" />
                         Star Us
                     </a>
-                    <Link to="/signin" className="px-4 py-1.5 text-xs font-medium tracking-wide text-gray-100 border border-white/40 rounded-full hover:bg-white/10 shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                    <Link to="/login" className="px-4 py-1.5 text-xs font-medium tracking-wide text-gray-100 border border-white/40 rounded-full hover:bg-white/10 shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
                         SIGN IN
                     </Link>
                     <Link to="/register" className="px-4 py-1.5 text-xs font-medium tracking-wide text-gray-100 border border-white/40 rounded-full hover:bg-white/10 shadow-[0_0_10px_rgba(255,255,255,0.1)] hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">

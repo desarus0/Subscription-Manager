@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function StartButton({ children, href, className = '' }) {
     const btnRef = useRef(null)
@@ -25,7 +26,7 @@ export default function StartButton({ children, href, className = '' }) {
         setGradientX(0)
     }
 
-    const Tag = href ? 'a' : 'button'
+    const Tag = href ? Link : 'button'
 
     return (
         <div
@@ -51,7 +52,7 @@ export default function StartButton({ children, href, className = '' }) {
             {/* Button */}
             <Tag
                 ref={btnRef}
-                href={href}
+                to={href}
                 className={`relative z-10 flex items-center justify-center overflow-hidden rounded-full border border-white/30 bg-[#d1d1d1] h-10 px-16 uppercase font-bold text-[12px] tracking-[-0.015em] space-x-1 ${className}`}
             >
                 {/* Inner glow */}
