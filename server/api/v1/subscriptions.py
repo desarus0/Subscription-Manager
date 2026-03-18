@@ -7,7 +7,7 @@ from typing import List
 
 router = APIRouter()
 
-@router.post("/", response_model=SubscriptionResponse, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=SubscriptionResponse, status_code=status.HTTP_201_CREATED)
 async def create_sub(sub_data: SubscriptionCreate, current_user: dict = Depends(get_current_user)):
     user_id = current_user["clerk_user_id"]
 
@@ -15,7 +15,7 @@ async def create_sub(sub_data: SubscriptionCreate, current_user: dict = Depends(
 
     return subscription
 
-@router.get("/", response_model=List[SubscriptionResponse])
+@router.get("", response_model=List[SubscriptionResponse])
 async def get_subscriptions(current_user: dict = Depends(get_current_user)):
     user_id = current_user["clerk_user_id"]
 
