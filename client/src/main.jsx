@@ -11,6 +11,8 @@ import Dashboard from './pages/dashboard.jsx'
 import Analytics from './pages/analytics.jsx'
 import Subscriptions from './pages/subscriptions.jsx'
 import SignIn from './pages/signinPage.jsx'
+import Pricing from './pages/pricing.jsx'
+import Resources from './pages/resources.jsx'
 import { AddSubProvider, useAddSub } from './context/addSubscriptionContext.jsx'
 import { AddSubscriptionSheet } from './components/add-subscription-sheet.jsx'
 
@@ -40,6 +42,8 @@ createRoot(document.getElementById('root')).render(
               <Route path="/analytics" element={<Analytics />} />
               <Route path="/subscriptions" element={<Subscriptions />} />
               <Route path="/login" element={<SignIn />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/resources" element={<Resources />} />
             </Routes>
           </AddSubProvider>
         </BrowserRouter>

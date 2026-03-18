@@ -5,7 +5,7 @@ export function useApi() {
 
   async function apiFetch(path, options = {}) {
     const token = await getToken()
-    return fetch(`http://localhost:8000${path}`, {
+    return fetch(`${import.meta.env.VITE_API_URL}${path}`, {
       ...options,
       headers: {
         Authorization: `Bearer ${token}`,

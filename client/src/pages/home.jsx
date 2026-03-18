@@ -1,8 +1,8 @@
 import Header from '../components/header.jsx'
+import Footer from '../components/footer.jsx'
 import StartButton from '../components/startButton.jsx'
 import LaserFlow from '../components/reactbits/laser.jsx'
 import dashboardImg from '../assets/dashboard.png'
-import heart from '../assets/heart.png'
 
 function Home(){
     return(
@@ -41,22 +41,7 @@ function Home(){
                         </p>
 
                         <div className="mt-8">
-                            <StartButton href="/register">
-                                <span className="relative z-10 text-[#5A250A]">Start Now</span>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 17 9"
-                                    className="relative z-10 h-2.25 w-4.25 text-[#5A250A]"
-                                >
-                                <path
-                                    fill="currentColor"
-                                    fillRule="evenodd"
-                                    d="m12.495 0 4.495 4.495-4.495 4.495-.99-.99 2.805-2.805H0v-1.4h14.31L11.505.99z"
-                                    clipRule="evenodd"
-                                />
-                                </svg>
-                            </StartButton>
+                            <StartButton href="/register" variant="white">Start Now</StartButton>
                         </div>
                     </main>
                 </div>
@@ -108,22 +93,11 @@ function Home(){
                     Track recurring payments, analyze spending patterns, and never forget a renewal again.
                     </p>
 
-                    <StartButton href="/register">
-                        <span className="relative z-10 text-[#5A250A]">Start Now</span>
-                    </StartButton>
+                    <StartButton href="/register" variant="black">Start Now</StartButton>
 
                 </div>
 
-                <div className="max-w-7xl mx-auto px-6 mt-12 flex justify-between items-center" style={{ fontFamily: 'Geist' }}>
-                    <p className="text-gray-700 text-base">© {new Date().getFullYear()} Recur. All Rights Reserved.</p>
-
-                    <a href="https://github.com/desarus0" target="_blank" rel="noopener noreferrer">
-                        <div className="flex items-center"> 
-                            <img src={heart} alt="heart icon" className="w-12 h-12" />
-                            <p className="text-base font-medium bg-linear-to-r from-[#ff86b9] via-gray500 to-gray-500 bg-clip-text text-transparent">Made with passion by Justin</p>
-                        </div>
-                    </a>
-                </div>
+                <Footer />
             </div>
         </div>
     )

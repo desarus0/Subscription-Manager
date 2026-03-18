@@ -1,16 +1,12 @@
 from database.db import users_collection
 from models.user import User, UserCreate
 from datetime import datetime
-import secrets
 
 async def create_user(user_data: UserCreate) -> User:
-    api_key = f"sk_{secrets.token_urlsafe(32)}"
-
-
     user_dict = {
         "email": user_data.email,
         "name": user_data.name,
-        "api_key": api_key,
+        "clerk_user_id": user_data.clerk_user_id,
         "created_at": datetime.utcnow(),
     }
 
@@ -23,3 +19,7 @@ async def create_user(user_data: UserCreate) -> User:
 async def get_user_by_email(email: str) -> User:
     user = await users_collection.find_one({"email": email})
     return user
+
+async def delete_user(clerk_user_id: str) -> bool:
+    result = await users_collection.delete_one({"clerk_user_id": clerk_user_id})
+    return result.deleted_count > 0

@@ -44,23 +44,16 @@ const data = {
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "/account",
       icon: (
         <Settings2Icon />
       ),
     },
     {
       title: "Get Help",
-      url: "#",
+      url: "https://github.com/desarus0/Subscription-Manager/issues",
       icon: (
         <CircleHelpIcon />
-      ),
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: (
-        <SearchIcon />
       ),
     },
   ],

@@ -2,23 +2,9 @@ import { useState, useEffect } from 'react'
 import { useSignUp, useAuth } from '@clerk/clerk-react'
 import { useNavigate, Link } from 'react-router-dom'
 import Logo from '../components/logo.jsx'
+import { PasswordRequirements, isPasswordValid } from '@/components/password-requirements'
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-function checkPasswordRequirements(passwordValue) {
-    return {
-        hasMinLength: passwordValue.length >= 8,
-        hasUppercase: /[A-Z]/.test(passwordValue),
-        hasLowercase: /[a-z]/.test(passwordValue),
-        hasNumber: /[0-9]/.test(passwordValue),
-        hasSpecial: /[!@#$%^&*(),.?":{}|<>]/.test(passwordValue)
-    }
-}
-
-function isPasswordValid(passwordValue) {
-    const checks = checkPasswordRequirements(passwordValue)
-    return checks.hasMinLength && checks.hasUppercase && checks.hasLowercase && checks.hasNumber && checks.hasSpecial
-}
 
 function SignUp() {
     const { signUp } = useSignUp()
@@ -169,21 +155,7 @@ function SignUp() {
                             onChange={(e) => { setPassword(e.target.value); setErrors(prev => ({ ...prev, password: '' })) }}
                         />
 
-                        <div className={`overflow-hidden transition-all duration-200 ${showRequirements ? 'max-h-44 opacity-100 mt-2' : 'max-h-0 opacity-0'}`}>
-                            <div className="bg-[#161616] border border-[#2a2a2a] rounded-lg p-3">
-                                {[
-                                    [checkPasswordRequirements(password).hasMinLength, 'At least 8 characters'],
-                                    [checkPasswordRequirements(password).hasUppercase, 'One uppercase letter (A-Z)'],
-                                    [checkPasswordRequirements(password).hasLowercase, 'One lowercase letter (a-z)'],
-                                    [checkPasswordRequirements(password).hasNumber, 'One number (0-9)'],
-                                    [checkPasswordRequirements(password).hasSpecial, 'One special character (!@#$%^&*)'],
-                                ].map(([met, label]) => (
-                                    <p key={label} className="text-xs text-gray-500 mb-1 last:mb-0">
-                                        <span className={met ? 'text-white' : 'text-red-500'}>{met ? '✓ ' : '✗ '}</span>{label}
-                                    </p>
-                                ))}
-                            </div>
-                        </div>
+                        <PasswordRequirements value={password} visible={showRequirements} />
 
                         <span className="text-red-500 text-xs min-h-4.5 mt-1">{errors.password}</span>
                     </div>

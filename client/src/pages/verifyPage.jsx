@@ -108,14 +108,15 @@ function VerifyPage() {
                 await setActive({ session: verificationAttempt.createdSessionId })
 
                 try {
-                    const res = await fetch('http://localhost:8000/api/v1/auth/register', {
+                    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/auth/register`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
                             email: signUp.emailAddress,
-                            name: `${signUp.firstName} ${signUp.lastName}`
+                            name: `${signUp.firstName} ${signUp.lastName}`,
+                            clerk_user_id: signUp.createdUserId,
                         })
                     })
                     
@@ -124,7 +125,7 @@ function VerifyPage() {
                         return
                     }
 
-                    navigate('/dashboard')
+                    window.location.href = '/dashboard'
                 } catch (error) {
                         setIsLoading(false)
                         setError('Something went wrong. Please try again.')

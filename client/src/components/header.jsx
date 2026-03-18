@@ -27,7 +27,6 @@ function Header() {
                     <nav className="flex items-center gap-1 pl-8" style={{ fontFamily: 'Geist' }}>
                         <Link to="/pricing" className="px-3 text-[15px] text-gray-100 hover:text-[#4a6fb8]">Pricing</Link>
                         <Link to="/resources" className="px-3 text-[15px] text-gray-100 hover:text-[#4a6fb8]">Resources</Link>
-                        <Link to="/download" className="px-3 text-[15px] text-gray-100 hover:text-[#4a6fb8]">Download</Link>
                     </nav>
                 </div>
                 <div className="flex items-center gap-4" style={{ fontFamily: 'Geist' }}>
