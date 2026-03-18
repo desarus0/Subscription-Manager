@@ -34,7 +34,7 @@ jobs:
         FRONTEND_URI=${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_FRONTEND }}:latest
         docker build \
           --build-arg VITE_CLERK_PUBLISHABLE_KEY=${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }} \
-          --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
+          --build-arg VITE_API_URL="" \
           -t $FRONTEND_URI ./client
         docker push $FRONTEND_URI
 
