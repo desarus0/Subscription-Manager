@@ -1,37 +1,39 @@
-name: Build and Push to ECR
+name: Build and Push Images
 
 on:
   push:
     branches: ["main"]
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v4
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v4
+    - uses: aws-actions/configure-aws-credentials@v4
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
 
-    - name: Login to Amazon ECR
+    - uses: aws-actions/amazon-ecr-login@v2
       id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v2
 
-    - name: Build Docker image
+    - name: Build + Push Backend
       run: |
-        docker build -t ${{ secrets.ECR_REPOSITORY }} .
+        BACKEND_URI=${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_BACKEND }}:latest
+        docker build -t $BACKEND_URI ./server
+        docker push $BACKEND_URI
 
-    - name: Tag Docker image
+    - name: Build + Push Frontend
       run: |
-        docker tag ${{ secrets.ECR_REPOSITORY }}:latest \
-        ${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPOSITORY }}:latest
-
-    - name: Push to ECR
-      run: |
-        docker push ${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPOSITORY }}:latest
+        FRONTEND_URI=${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_FRONTEND }}:latest
+        docker build \
+          --build-arg VITE_CLERK_PUBLISHABLE_KEY=${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }} \
+          --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
+          -t $FRONTEND_URI ./client
+        docker push $FRONTEND_URI
