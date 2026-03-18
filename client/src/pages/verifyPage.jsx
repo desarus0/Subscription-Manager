@@ -105,8 +105,6 @@ function VerifyPage() {
             })
 
             if(verificationAttempt.status === "complete"){
-                await setActive({ session: verificationAttempt.createdSessionId })
-
                 try {
                     const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/auth/register`, {
                         method: 'POST',
@@ -116,21 +114,24 @@ function VerifyPage() {
                         body: JSON.stringify({
                             email: signUp.emailAddress,
                             name: `${signUp.firstName} ${signUp.lastName}`,
-                            clerk_user_id: signUp.createdUserId,
+                            clerk_user_id: verificationAttempt.createdUserId,
                         })
                     })
-                    
+
                     if(!res.ok){
+                        setIsLoading(false)
                         setError('Something went wrong. Please try again.')
                         return
                     }
-
-                    window.location.href = '/dashboard'
                 } catch (error) {
-                        setIsLoading(false)
-                        setError('Something went wrong. Please try again.')
-                    }
-                }  
+                    setIsLoading(false)
+                    setError('Something went wrong. Please try again.')
+                    return
+                }
+
+                await setActive({ session: verificationAttempt.createdSessionId })
+                window.location.href = '/dashboard'
+            }  
         } catch (error) {
             setIsLoading(false)
             if (error.errors) {
