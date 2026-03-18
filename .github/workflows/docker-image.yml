@@ -37,3 +37,14 @@ jobs:
           --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
           -t $FRONTEND_URI ./client
         docker push $FRONTEND_URI
+
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_KEY }}
+        script: |
+          cd Subscription-Manager
+          docker-compose pull
+          docker-compose up -d

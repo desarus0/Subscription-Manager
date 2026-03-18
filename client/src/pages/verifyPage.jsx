@@ -12,7 +12,7 @@ function VerifyPage() {
         if (!isLoaded) return
 
         if (isSignedIn) {
-            navigate('/')
+            navigate('/dashboard')
             return
         }
 
@@ -119,9 +119,13 @@ function VerifyPage() {
                     })
 
                     if(!res.ok){
-                        setIsLoading(false)
-                        setError('Something went wrong. Please try again.')
-                        return
+                        const data = await res.json().catch(() => ({}))
+                        if(data.detail !== 'EMAIL_ACTIVE'){
+                            setIsLoading(false)
+                            setError('Something went wrong. Please try again.')
+                            return
+                        }
+                        // user already exists in DB, proceed to activate session
                     }
                 } catch (error) {
                     setIsLoading(false)
