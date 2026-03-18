@@ -9,7 +9,8 @@ app_version = "1.0.0"
 app = FastAPI(
     title="Subscription Manager",
     description="Track and manage your subscriptions",
-    version=app_version
+    version=app_version,
+    redirect_slashes=False
 )
 
 add_cors(app)
